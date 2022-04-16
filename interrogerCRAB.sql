@@ -1,47 +1,47 @@
 use crab;
 
-/* Question 1 */
+/* Requete 1 */
 SELECT code , localisation
 FROM Borne , Station
 WHERE Borne.station = Station.numero 
 AND Borne.etat LIKE "HS" ;
 
-/* Question 2 */
+/* Requete 2 */
 SELECT code , station
 FROM Borne , Station
 WHERE Borne.station = Station.numero
 AND Station.numero = 2 ;
 
-/* Question 3 */
+/* Requete 3 */
 SELECT nom , prenom
 FROM Technicien
 ORDER BY nom ASC ;
 
-/* Question 4*/
+/* Requete 4*/
 SELECT DISTINCT nom , prenom
 FROM Technicien , Interventions
 WHERE Technicien.matricule = Interventions.technicien 
 AND Interventions.borne LIKE "B1"
 ORDER BY nom ASC ;
 
-/* Question 5 */
+/* Requete 5 */
 SELECT DISTINCT nom , prenom
 FROM Technicien , Interventions
 WHERE Technicien.matricule = Interventions.technicien 
 AND Interventions.borne NOT LIKE "B1"
 ORDER BY nom ASC ;
 
-/* Question 6 */
+/* Requete 6 */
 SELECT *
 FROM Interventions
 WHERE fin IS NULL ;
 
-/* Question 7 */
+/* Requete 7 */
 SELECT DISTINCT *
 FROM Interventions
 WHERE LEFT( ROUND( TIMEDIFF( fin, debut) ) ,2) >3 ;
 
-/* Question 8 */
+/* Requete 8 */
 SELECT SUM(borne = "B1") AS nb_interventions_B1,
 SUM(borne = "B2") AS nb_interventions_B2,
 SUM(borne = "B3") AS nb_interventions_B3,
@@ -53,7 +53,7 @@ SUM(borne = "B8") AS nb_interventions_B8,
 SUM(borne = "B9") AS nb_interventions_B9
 FROM Interventions \G ;
 
-/* Question 9 */
+/* Requete 9 */
 SELECT borne,COUNT(borne) AS nb_borne
 FROM Interventions 
 GROUP BY borne 
